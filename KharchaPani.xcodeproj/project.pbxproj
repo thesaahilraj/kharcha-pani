@@ -20,6 +20,7 @@
 		A100001529F0000100000001 /* RegexCustomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001629F0000100000001 /* RegexCustomizerView.swift */; };
 		A100001729F0000100000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001829F0000100000001 /* SettingsView.swift */; };
 		A100001929F0000100000001 /* KharchaPaniLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001A29F0000100000001 /* KharchaPaniLogoView.swift */; };
+		A100003029F0000100000001 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100003129F0000100000001 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		A100001829F0000100000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A100001A29F0000100000001 /* KharchaPaniLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KharchaPaniLogoView.swift; sourceTree = "<group>"; };
 		A100001B29F0000100000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A100003129F0000100000001 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +57,16 @@
 			isa = PBXGroup;
 			children = (
 				A100001E29F0000100000001 /* KharchaPani */,
+				A100002C29F0000100000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A100002C29F0000100000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
 				A100000029F0000100000001 /* KharchaPani.app */,
 			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A100001E29F0000100000001 /* KharchaPani */ = {
@@ -99,6 +109,7 @@
 				A100001429F0000100000001 /* TransactionLedgerView.swift */,
 				A100001629F0000100000001 /* RegexCustomizerView.swift */,
 				A100001829F0000100000001 /* SettingsView.swift */,
+				A100003129F0000100000001 /* Theme.swift */,
 				A100002229F0000100000001 /* Components */,
 			);
 			path = Views;
@@ -150,7 +161,7 @@
 				Base,
 			);
 			mainGroup = A100001D29F0000100000001;
-			productRefGroup = A100001D29F0000100000001;
+			productRefGroup = A100002C29F0000100000001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -177,6 +188,7 @@
 				A100001529F0000100000001 /* RegexCustomizerView.swift in Sources */,
 				A100001729F0000100000001 /* SettingsView.swift in Sources */,
 				A100001929F0000100000001 /* KharchaPaniLogoView.swift in Sources */,
+				A100003029F0000100000001 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
