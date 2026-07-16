@@ -1,0 +1,108 @@
+name: iOS Build & Automatic Release
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build iOS Xcode App & Package Release
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Xcode Version
+        run: |
+          sudo xcode-select -s /Applications/Xcode_15.4.app
+          xcodebuild -version
+
+      - name: Build Unsigned iOS Product (iPhoneOS)
+        run: |
+          xcodebuild clean build \
+            -project KharchaPani.xcodeproj \
+            -scheme KharchaPani \
+            -configuration Release \
+            -sdk iphoneos \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            BUILD_DIR=build
+
+      - name: Build Unsigned iOS Simulator Product (iphonesimulator)
+        run: |
+          xcodebuild clean build \
+            -project KharchaPani.xcodeproj \
+            -scheme KharchaPani \
+            -configuration Release \
+            -sdk iphonesimulator \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            BUILD_DIR=build-sim
+
+      - name: Package iOS .ipa and Simulator .zip Archives
+        run: |
+          mkdir -p output/Payload
+          
+          # Find and copy built iOS app bundle into Payload
+          APP_PATH=$(find build/Release-iphoneos -name "*.app" | head -n 1)
+          cp -R "$APP_PATH" output/Payload/
+          
+          # Zip into .ipa
+          cd output
+          zip -r ../KharchaPani-v1.0.0.ipa Payload
+          cd ..
+          
+          # Package Simulator .app zip
+          SIM_APP_PATH=$(find build-sim/Release-iphonesimulator -name "*.app" | head -n 1)
+          cd build-sim/Release-iphonesimulator
+          zip -r ../../KharchaPani-Simulator-v1.0.0.app.zip $(basename "$SIM_APP_PATH")
+          cd ../..
+          
+          echo "Build Packaging Completed:"
+          ls -lh KharchaPani-v1.0.0.ipa KharchaPani-Simulator-v1.0.0.app.zip
+
+      - name: Upload Artifacts to Build Run
+        uses: actions/upload-artifact@v4
+        with:
+          name: KharchaPani-iOS-Builds
+          path: |
+            KharchaPani-v1.0.0.ipa
+            KharchaPani-Simulator-v1.0.0.app.zip
+
+      - name: Create or Update GitHub Release with Binaries
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME=${GITHUB_REF_NAME:-v1.0.0}
+          if [[ "$TAG_NAME" == "master" ]]; then
+            TAG_NAME="v1.0.0"
+          fi
+
+          echo "Publishing release binaries for tag: $TAG_NAME"
+          
+          gh release create "$TAG_NAME" \
+            KharchaPani-v1.0.0.ipa \
+            KharchaPani-Simulator-v1.0.0.app.zip \
+            --title "Kharcha Pani $TAG_NAME — Local Expense Tracker" \
+            --notes "## 📱 Kharcha Pani Release $TAG_NAME
+            
+          ### Features
+          - 100% Local Privacy: Zero network requests, no cloud servers, no third-party APIs.
+          - SMS Automation Pipeline: Exposure of Documents folder (\`UIFileSharingEnabled\`) for iOS Personal Automation Shortcuts.
+          - 7 Native Apple iOS SwiftUI Screens & Design System.
+          - High-Performance On-Device Regex Extraction Engine for UPI, Debit & Credit card messages.
+          
+          ### Installation Options
+          1. **iOS Device (.ipa)**: Download \`KharchaPani-v1.0.0.ipa\` and sideload via AltStore, Sideloadly, or Apple Configurator.
+          2. **iOS Simulator (.zip)**: Drag \`KharchaPani-Simulator-v1.0.0.app.zip\` onto Xcode iOS Simulator." \
+            --clobber || gh release upload "$TAG_NAME" KharchaPani-v1.0.0.ipa KharchaPani-Simulator-v1.0.0.app.zip --clobber
