@@ -104,7 +104,7 @@
 			children = (
 				A100000C29F0000100000001 /* SplashView.swift */,
 				A100000E29F0000100000001 /* ShortcutOnboardingView.swift */,
-				A100000F29F0000100000001 /* ExpenseDashboardView.swift */,
+				A100001029F0000100000001 /* ExpenseDashboardView.swift */,
 				A100001229F0000100000001 /* AnalyticsView.swift */,
 				A100001429F0000100000001 /* TransactionLedgerView.swift */,
 				A100001629F0000100000001 /* RegexCustomizerView.swift */,
