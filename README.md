@@ -12,6 +12,19 @@
 
 ---
 
+<div align="center">
+
+### 📱 App Screenshots
+
+<img src="screenshots/final/aso-1-track.png" width="30%" alt="Track Daily Expenses" />
+<img src="screenshots/final/aso-2-analyze.png" width="30%" alt="Analyze Spending Trends" />
+<img src="screenshots/final/aso-3-automate.png" width="30%" alt="Automate Bank SMS Logging" />
+
+</div>
+
+---
+
+
 iOS doesn't let third-party apps read the SMS inbox. Kharcha Pani works around that with a native iOS Shortcut instead of a background service: a Personal Automation fires on incoming bank SMS and appends each message as a JSON line to a file shared with the app through the Files app. The app watches that file and parses everything locally — nothing ever leaves the device.
 
 ```
