@@ -1,0 +1,272 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A100000129F0000100000001 /* KharchaPaniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000229F0000100000001 /* KharchaPaniApp.swift */; };
+		A100000329F0000100000001 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000429F0000100000001 /* Models.swift */; };
+		A100000529F0000100000001 /* TransactionFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000629F0000100000001 /* TransactionFileManager.swift */; };
+		A100000729F0000100000001 /* TransactionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000829F0000100000001 /* TransactionParser.swift */; };
+		A100000929F0000100000001 /* RegexRuleEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000A29F0000100000001 /* RegexRuleEngine.swift */; };
+		A100000B29F0000100000001 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000C29F0000100000001 /* SplashView.swift */; };
+		A100000D29F0000100000001 /* ShortcutOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000E29F0000100000001 /* ShortcutOnboardingView.swift */; };
+		A100000F29F0000100000001 /* ExpenseDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001029F0000100000001 /* ExpenseDashboardView.swift */; };
+		A100001129F0000100000001 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001229F0000100000001 /* AnalyticsView.swift */; };
+		A100001329F0000100000001 /* TransactionLedgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001429F0000100000001 /* TransactionLedgerView.swift */; };
+		A100001529F0000100000001 /* RegexCustomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001629F0000100000001 /* RegexCustomizerView.swift */; };
+		A100001729F0000100000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001829F0000100000001 /* SettingsView.swift */; };
+		A100001929F0000100000001 /* KharchaPaniLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001A29F0000100000001 /* KharchaPaniLogoView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A100000029F0000100000001 /* KharchaPani.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KharchaPani.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A100000229F0000100000001 /* KharchaPaniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KharchaPaniApp.swift; sourceTree = "<group>"; };
+		A100000429F0000100000001 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A100000629F0000100000001 /* TransactionFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFileManager.swift; sourceTree = "<group>"; };
+		A100000829F0000100000001 /* TransactionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionParser.swift; sourceTree = "<group>"; };
+		A100000A29F0000100000001 /* RegexRuleEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRuleEngine.swift; sourceTree = "<group>"; };
+		A100000C29F0000100000001 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		A100000E29F0000100000001 /* ShortcutOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutOnboardingView.swift; sourceTree = "<group>"; };
+		A100001029F0000100000001 /* ExpenseDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDashboardView.swift; sourceTree = "<group>"; };
+		A100001229F0000100000001 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		A100001429F0000100000001 /* TransactionLedgerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionLedgerView.swift; sourceTree = "<group>"; };
+		A100001629F0000100000001 /* RegexCustomizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexCustomizerView.swift; sourceTree = "<group>"; };
+		A100001829F0000100000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A100001A29F0000100000001 /* KharchaPaniLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KharchaPaniLogoView.swift; sourceTree = "<group>"; };
+		A100001B29F0000100000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A100001C29F0000100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A100001D29F0000100000001 = {
+			isa = PBXGroup;
+			children = (
+				A100001E29F0000100000001 /* KharchaPani */,
+				A100000029F0000100000001 /* KharchaPani.app */,
+			);
+			sourceTree = "<group>";
+		};
+		A100001E29F0000100000001 /* KharchaPani */ = {
+			isa = PBXGroup;
+			children = (
+				A100000229F0000100000001 /* KharchaPaniApp.swift */,
+				A100001B29F0000100000001 /* Info.plist */,
+				A100001F29F0000100000001 /* Models */,
+				A100002029F0000100000001 /* Services */,
+				A100002129F0000100000001 /* Views */,
+			);
+			path = KharchaPani;
+			sourceTree = "<group>";
+		};
+		A100001F29F0000100000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A100000429F0000100000001 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A100002029F0000100000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A100000629F0000100000001 /* TransactionFileManager.swift */,
+				A100000829F0000100000001 /* TransactionParser.swift */,
+				A100000A29F0000100000001 /* RegexRuleEngine.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A100002129F0000100000001 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A100000C29F0000100000001 /* SplashView.swift */,
+				A100000E29F0000100000001 /* ShortcutOnboardingView.swift */,
+				A100000F29F0000100000001 /* ExpenseDashboardView.swift */,
+				A100001229F0000100000001 /* AnalyticsView.swift */,
+				A100001429F0000100000001 /* TransactionLedgerView.swift */,
+				A100001629F0000100000001 /* RegexCustomizerView.swift */,
+				A100001829F0000100000001 /* SettingsView.swift */,
+				A100002229F0000100000001 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A100002229F0000100000001 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A100001A29F0000100000001 /* KharchaPaniLogoView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A100002329F0000100000001 /* KharchaPani */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A100002429F0000100000001 /* Build configuration list for PBXNativeTarget "KharchaPani" */;
+			buildPhases = (
+				A100002529F0000100000001 /* Sources */,
+				A100001C29F0000100000001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KharchaPani;
+			productName = KharchaPani;
+			productReference = A100000029F0000100000001 /* KharchaPani.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A100002629F0000100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+			};
+			buildConfigurationList = A100002729F0000100000001 /* Build configuration list for PBXProject "KharchaPani" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A100001D29F0000100000001;
+			productRefGroup = A100001D29F0000100000001;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A100002329F0000100000001 /* KharchaPani */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A100002529F0000100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100000129F0000100000001 /* KharchaPaniApp.swift in Sources */,
+				A100000329F0000100000001 /* Models.swift in Sources */,
+				A100000529F0000100000001 /* TransactionFileManager.swift in Sources */,
+				A100000729F0000100000001 /* TransactionParser.swift in Sources */,
+				A100000929F0000100000001 /* RegexRuleEngine.swift in Sources */,
+				A100000B29F0000100000001 /* SplashView.swift in Sources */,
+				A100000D29F0000100000001 /* ShortcutOnboardingView.swift in Sources */,
+				A100000F29F0000100000001 /* ExpenseDashboardView.swift in Sources */,
+				A100001129F0000100000001 /* AnalyticsView.swift in Sources */,
+				A100001329F0000100000001 /* TransactionLedgerView.swift in Sources */,
+				A100001529F0000100000001 /* RegexCustomizerView.swift in Sources */,
+				A100001729F0000100000001 /* SettingsView.swift in Sources */,
+				A100001929F0000100000001 /* KharchaPaniLogoView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A100002829F0000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KharchaPani/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kharchapani.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A100002929F0000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = KharchaPani/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kharchapani.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A100002A29F0000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A100002B29F0000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A100002429F0000100000001 /* Build configuration list for PBXNativeTarget "KharchaPani" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A100002829F0000100000001 /* Debug */,
+				A100002929F0000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A100002729F0000100000001 /* Build configuration list for PBXProject "KharchaPani" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A100002A29F0000100000001 /* Debug */,
+				A100002B29F0000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A100002629F0000100000001 /* Project object */;
+}

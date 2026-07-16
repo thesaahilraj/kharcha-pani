@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kharcha Pani — Local Expense Tracker via SMS Automation</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-viewport">
+    <div class="iphone-container">
+      
+      <!-- Ambient Liquid Light Mesh Orbs for Glass Refraction -->
+      <div class="liquid-mesh-glow">
+        <div class="liquid-orb orb-cyan"></div>
+        <div class="liquid-orb orb-purple"></div>
+        <div class="liquid-orb orb-blue"></div>
+      </div>
+
+      <!-- Top Dynamic iOS Notch / Island Bar -->
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="sensor-island"></div>
+        <div class="status-icons">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M1 9.5h2.5v2H1v-2zm4-3h2.5v5H5v-5zm4-3h2.5v8H9v-8zm4-3H15.5v11H13v-11z"/></svg>
+          <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M7.5 0C4.3 0 1.6 1.4 0 3.6l7.5 7.4L15 3.6C13.4 1.4 10.7 0 7.5 0z"/></svg>
+          <svg width="22" height="11" viewBox="0 0 22 11" fill="currentColor"><rect x="0.5" y="0.5" width="18" height="10" rx="2.5" stroke="currentColor" fill="none"/><rect x="2" y="2" width="13" height="7" rx="1.5"/><path d="M20 3.5v4" stroke="currentColor" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Main Screen Views Container -->
+      <main id="app-content">
+
+        <!-- SCREEN 1: SPLASH & INITIAL SETUP -->
+        <section id="screen-splash" class="screen-view active">
+          <div class="splash-hero">
+            <div class="logo-mark">
+              <div class="logo-box">
+                <canvas id="logo-canvas" width="80" height="80"></canvas>
+                <div class="logo-rupee">₹</div>
+              </div>
+            </div>
+
+            <div class="splash-titles">
+              <h1>Kharcha Pani</h1>
+              <p>Private SMS-automated expense ledger</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-item">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-text">
+                  <h3>100% Local Privacy</h3>
+                  <p>No cloud servers, no bank logins, zero third-party APIs.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-text">
+                  <h3>Hands-Free SMS Logging</h3>
+                  <p>iOS Personal Shortcuts append transaction text files locally.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">🔍</div>
+                <div class="feature-text">
+                  <h3>On-Device Regex Engine</h3>
+                  <p>Parses raw UPI, debit & credit card SMS text instantly.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="splash-actions">
+              <div id="splash-status-badge" class="status-badge hidden">✓ Initialized transactional.jsonl</div>
+              <button id="btn-init-sandbox" class="btn-primary">
+                <span>Initialize Local Sandbox</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <span class="subtext">Creates On My iPhone/KharchaPani/transactional.jsonl</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SCREEN 2: SHORTCUT AUTOMATION ONBOARDING -->
+        <section id="screen-onboarding" class="screen-view">
+          <div class="header-bar">
+            <div>
+              <h2>iOS Automation Setup</h2>
+              <span class="subtext">3-Step Hands-Free Pipeline</span>
+            </div>
+            <div class="mini-logo">₹</div>
+          </div>
+
+          <div class="step-progress-bar">
+            <div class="progress-dot active" id="dot-0"></div>
+            <div class="progress-dot" id="dot-1"></div>
+            <div class="progress-dot" id="dot-2"></div>
+          </div>
+
+          <div class="carousel-container">
+            <div class="carousel-card active clickable-step" id="card-0" onclick="handleShortcutStepClick(0)">
+              <div class="step-badge">STEP 1 OF 3 • TAP TO ADD</div>
+              <div class="card-title">Create Message Trigger</div>
+              <p class="card-desc">Open native <strong>Shortcuts App</strong> &rarr; Automations tab &rarr; <strong>Create Personal Automation</strong>. Choose <strong>Message</strong> trigger: when message contains "debited" or "spent" or "UPI".</p>
+              <div class="card-icon">💬</div>
+            </div>
+
+            <div class="carousel-card clickable-step" id="card-1" onclick="handleShortcutStepClick(1)">
+              <div class="step-badge">STEP 2 OF 3 • TAP TO ADD</div>
+              <div class="card-title">Enable Immediate Execution</div>
+              <p class="card-desc">Uncheck <strong>"Ask Before Running"</strong> and select <strong>"Run Immediately"</strong> to ensure hands-free background logging.</p>
+              <div class="card-icon">⚡</div>
+            </div>
+
+            <div class="carousel-card clickable-step" id="card-2" onclick="handleShortcutStepClick(2)">
+              <div class="step-badge">STEP 3 OF 3 • TAP TO ADD</div>
+              <div class="card-title">Append JSON Line File</div>
+              <p class="card-desc">Format date as ISO8601 string and append line to <code>On My iPhone/KharchaPani/transactional.jsonl</code>.</p>
+              <div class="code-box">{"date":"ISO_8601","sender":"SENDER","body":"SMS_BODY"}</div>
+            </div>
+          </div>
+
+          <div class="onboarding-controls">
+            <div id="shortcut-added-status" class="shortcut-status-banner locked">⚠️ Shortcut required: Tap any card above to copy & add</div>
+            <button id="btn-copy-template" class="btn-secondary" onclick="handleShortcutStepClick(0)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span id="copy-btn-text">Copy & Open iOS Shortcuts</span>
+            </button>
+            <button id="btn-enter-app" class="btn-primary" onclick="handleEnterAppClick()">Go to Expense Dashboard</button>
+          </div>
+        </section>
+
+        <!-- SCREEN 3: MAIN EXPENSE DASHBOARD -->
+        <section id="screen-dashboard" class="screen-view">
+          <div class="glass-nav-header">
+            <div class="glass-nav-title">
+              <h2>Kharcha Pani</h2>
+              <div class="sync-status">
+                <span class="pulse-dot"></span>
+                <span id="last-sync-label">Local Ledger Live</span>
+              </div>
+            </div>
+            <div class="glass-action-group">
+              <button class="glass-button" id="btn-header-sync" onclick="processLedger(); renderDashboard();">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                <span>Sync</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Total Outflow Balance Metric Card -->
+          <div class="hero-metric-card glass-card">
+            <div class="metric-header">
+              <span>TOTAL ACCOUNT OUTFLOW</span>
+              <span class="count-chip" id="dash-count-chip">0 Txns</span>
+            </div>
+            <div class="metric-row">
+              <h1 id="dash-total-outflow">₹0.00</h1>
+              <div class="outflow-indicator">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Progress Allocation -->
+          <div class="section-card">
+            <h3>Category Allocation</h3>
+            <div class="category-bars">
+              <div class="cat-bar-group">
+                <div class="cat-label">
+                  <span>🍽️ Food & Dining</span>
+                  <span id="cat-amt-food">₹0.00</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill red" id="bar-food" style="width:0%"></div></div>
+              </div>
+              <div class="cat-bar-group">
+                <div class="cat-label">
+                  <span>🚗 Transport</span>
+                  <span id="cat-amt-transport">₹0.00</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill blue" id="bar-transport" style="width:0%"></div></div>
+              </div>
+              <div class="cat-bar-group">
+                <div class="cat-label">
+                  <span>🛍️ Shopping</span>
+                  <span id="cat-amt-shopping">₹0.00</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill purple" id="bar-shopping" style="width:0%"></div></div>
+              </div>
+              <div class="cat-bar-group">
+                <div class="cat-label">
+                  <span>📦 Miscellaneous</span>
+                  <span id="cat-amt-misc">₹0.00</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill gray" id="bar-misc" style="width:0%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tracked Transactions List -->
+          <div class="dashboard-list-container">
+            <div class="list-header">
+              <h3>Recent Tracked Outflows</h3>
+              <button class="link-btn" onclick="switchTab('screen-ledger')">View Ledger</button>
+            </div>
+            <div id="dashboard-txns-list" class="txn-cards-list"></div>
+          </div>
+        </section>
+
+        <!-- SCREEN 4: ANALYTICS & SPENDING TRENDS -->
+        <section id="screen-analytics" class="screen-view">
+          <div class="glass-nav-header">
+            <div class="glass-nav-title">
+              <h2>Analytics & Trends</h2>
+              <span>Local Outflow Insights</span>
+            </div>
+            <div class="glass-action-group">
+              <div class="mini-logo">₹</div>
+            </div>
+          </div>
+
+          <!-- Monoline Weekly Bar Chart -->
+          <div class="section-card">
+            <div class="chart-header">
+              <span class="chart-tag">WEEKLY SPENDING PEAKS</span>
+              <h3>Outflow Intensity</h3>
+            </div>
+            <div class="bar-chart-container" id="bar-chart-container">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Key Metrics Grid -->
+          <div class="metrics-grid">
+            <div class="metric-box">
+              <span class="box-tag">DAILY AVERAGE</span>
+              <h2 id="metric-daily-avg">₹0.00</h2>
+              <span class="box-sub">Per active logging day</span>
+            </div>
+            <div class="metric-box">
+              <span class="box-tag">TOTAL LOGGED</span>
+              <h2 id="metric-total-logged">₹0.00</h2>
+              <span class="box-sub" id="metric-count-sub">0 parsed items</span>
+            </div>
+          </div>
+
+          <!-- Top Destination Ranking -->
+          <div class="section-card">
+            <h3>Top Destination Ranking</h3>
+            <div id="top-merchants-list" class="merchant-ranking-list"></div>
+          </div>
+        </section>
+
+        <!-- SCREEN 5: MASTER TRANSACTION LEDGER -->
+        <section id="screen-ledger" class="screen-view">
+          <div class="glass-nav-header">
+            <div class="glass-nav-title">
+              <h2>Master Ledger</h2>
+              <span id="ledger-subtitle">0 of 0 records</span>
+            </div>
+            <div class="glass-action-group">
+              <button class="glass-button" onclick="document.getElementById('ledger-search-input').focus()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Search Box -->
+          <div class="search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B949E" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="ledger-search-input" placeholder="Search merchant, sender ID, category...">
+          </div>
+
+          <!-- Account Filter Pills -->
+          <div class="filter-pills-row">
+            <button class="pill active" data-filter="all">All</button>
+            <button class="pill" data-filter="UPI">UPI</button>
+            <button class="pill" data-filter="Debit Card">Debit Card</button>
+            <button class="pill" data-filter="Credit Card">Credit Card</button>
+          </div>
+
+          <!-- Master Table List -->
+          <div id="master-ledger-list" class="ledger-cards-list"></div>
+        </section>
+
+        <!-- SCREEN 7: SETTINGS & UTILITIES (WITH EMBEDDED REGEX RULES) -->
+        <section id="screen-settings" class="screen-view">
+          <div class="glass-nav-header">
+            <div class="glass-nav-title">
+              <h2>Settings & Utilities</h2>
+              <span>Storage & Rules Pipeline</span>
+            </div>
+            <div class="glass-action-group">
+              <button id="btn-open-add-rule" class="glass-button prominent">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>Add Rule</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Embedded Regex Rule Engine Playground Card -->
+          <div class="section-card glass-card">
+            <div class="card-header-row">
+              <span class="chart-tag">LIVE REGEX TESTER</span>
+              <span class="icon">⚡</span>
+            </div>
+            <div class="form-group">
+              <label>Sample Bank SMS:</label>
+              <textarea id="test-sms-text" rows="2">Alert: Spent Rs.450.00 via UPI to Swiggy@HDFC on 16-07-26.</textarea>
+            </div>
+            <div class="form-group">
+              <label>Regex Group Pattern:</label>
+              <input type="text" id="test-regex-pattern" value="(?:to|vpa|spent on)\s+([^\s]+)">
+            </div>
+            <button id="btn-run-regex-test" class="btn-secondary small">Execute Test Pattern</button>
+            <div id="test-result-box" class="result-box">Match: Swiggy@HDFC</div>
+          </div>
+
+          <!-- Rules List Container -->
+          <div class="section-card glass-card">
+            <div class="card-header-row">
+              <h3>Active Mapping Rules</h3>
+            </div>
+            <div id="rules-list-container" class="rules-list"></div>
+          </div>
+
+          <!-- Local File Storage Metrics Card -->
+          <div class="section-card glass-card">
+            <div class="card-header-row">
+              <span class="chart-tag">LOCAL FILE PIPELINE</span>
+              <span class="status-dot green"></span>
+            </div>
+            <div class="settings-metrics-list">
+              <div class="setting-row">
+                <span class="label">DOCUMENT ENDPOINT</span>
+                <span class="value code">On My iPhone/KharchaPani/transactional.jsonl</span>
+              </div>
+              <div class="setting-row">
+                <span class="label">FILE STATUS</span>
+                <span class="value green-text">Active & Shared to Files App</span>
+              </div>
+              <div class="setting-row">
+                <span class="label">FILE SIZE</span>
+                <span class="value" id="settings-file-size">1.2 KB</span>
+              </div>
+              <div class="setting-row">
+                <span class="label">TOTAL LOGGED LINES</span>
+                <span class="value" id="settings-line-count">7 JSON lines</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ledger Controls Card -->
+          <div class="section-card glass-card">
+            <h3>Ledger Controls</h3>
+            <div class="action-buttons-stack">
+              <button id="btn-resync-ledger" class="btn-secondary full">
+                🔄 Re-Sync Local Ledger
+              </button>
+              <button id="btn-export-backup" class="btn-secondary full">
+                📤 Export Raw JSONL Backup
+              </button>
+              <button id="btn-reopen-onboarding" class="btn-secondary full">
+                ⚡ Review iOS Shortcut Setup
+              </button>
+            </div>
+          </div>
+
+          <!-- App Version Metadata Card -->
+          <div class="section-card glass-card meta">
+            <span class="chart-tag">APP ENVIRONMENT</span>
+            <div class="meta-row">
+              <span>Kharcha Pani Version</span>
+              <strong>v1.0.0 (Open-Source)</strong>
+            </div>
+            <div class="meta-row">
+              <span>Info.plist Setting</span>
+              <strong class="green-text">UIFileSharingEnabled</strong>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Bottom Floating Liquid Glass Tab Bar Navigation (4 Tabs) -->
+      <nav class="bottom-tab-bar" id="main-tab-bar">
+        <div class="glass-tab-pill" id="glass-tab-pill"></div>
+        <button class="tab-item active" onclick="switchTab('screen-dashboard')">
+          <div class="tab-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/></svg>
+          </div>
+          <span>Dashboard</span>
+        </button>
+        <button class="tab-item" onclick="switchTab('screen-analytics')">
+          <div class="tab-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+          </div>
+          <span>Analytics</span>
+        </button>
+        <button class="tab-item" onclick="switchTab('screen-ledger')">
+          <div class="tab-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <span>Ledger</span>
+        </button>
+        <button class="tab-item" onclick="switchTab('screen-settings')">
+          <div class="tab-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- MODAL: Detail Inspector Sheet -->
+  <div id="modal-detail" class="modal-backdrop hidden">
+    <div class="modal-sheet">
+      <div class="sheet-header">
+        <h3>Raw Record Inspector</h3>
+        <button class="close-btn" onclick="closeModal('modal-detail')">✕</button>
+      </div>
+      <div id="modal-detail-body" class="sheet-body"></div>
+    </div>
+  </div>
+
+  <!-- MODAL: Add Rule Sheet -->
+  <div id="modal-add-rule" class="modal-backdrop hidden">
+    <div class="modal-sheet">
+      <div class="sheet-header">
+        <h3>Add Custom Parsing Rule</h3>
+        <button class="close-btn" onclick="closeModal('modal-add-rule')">✕</button>
+      </div>
+      <div class="sheet-body">
+        <div class="form-group">
+          <label>Merchant Regex Pattern:</label>
+          <input type="text" id="new-rule-pattern" placeholder="e.g. (?:SWG|Swiggy)\s*([A-Za-z0-9]+)">
+        </div>
+        <div class="form-group">
+          <label>Clean Merchant Name:</label>
+          <input type="text" id="new-rule-merchant" placeholder="e.g. Swiggy Food">
+        </div>
+        <div class="form-group">
+          <label>Category:</label>
+          <select id="new-rule-category">
+            <option value="Food & Dining">Food & Dining</option>
+            <option value="Transport">Transport</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Miscellaneous">Miscellaneous</option>
+          </select>
+        </div>
+        <button id="btn-save-new-rule" class="btn-primary full">Save Rule</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

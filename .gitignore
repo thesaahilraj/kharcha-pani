@@ -1,0 +1,9 @@
+# AI planning/design artifacts — not meant for the public repo
+AGENTS.md
+DESIGN.md
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+.build/
