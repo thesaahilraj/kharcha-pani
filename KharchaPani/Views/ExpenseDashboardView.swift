@@ -75,7 +75,7 @@ public struct ExpenseDashboardView: View {
                             }
                             
                             HStack(alignment: .firstTextBaseline) {
-                                Text("₹\(totalExpenses, specifier: "%.2f")")
+                                Text(String(format: "₹%.2f", totalExpenses))
                                     .font(.system(size: 38, weight: .bold, design: .rounded))
                                     .foregroundColor(AppleTheme.textPrimary)
                                 Spacer()
@@ -229,7 +229,7 @@ struct CategoryProgressRow: View {
                         .foregroundColor(AppleTheme.textPrimary)
                 }
                 Spacer()
-                Text("₹\(amount, specifier: "%.2f") (\(Int(percentage * 100))%)")
+                Text(String(format: "₹%.2f (%d%%)", amount, Int(percentage * 100)))
                     .font(.system(size: 12, design: .rounded))
                     .foregroundColor(AppleTheme.textMuted)
             }
@@ -285,7 +285,7 @@ struct TransactionCardRow: View {
             Spacer()
             
             VStack(alignment: .trailing, spacing: 4) {
-                Text("-₹\(txn.amount, specifier: "%.2f")")
+                Text(String(format: "-₹%.2f", txn.amount))
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(AppleTheme.textPrimary)
                 

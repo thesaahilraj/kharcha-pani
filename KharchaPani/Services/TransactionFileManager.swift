@@ -92,7 +92,7 @@ public class TransactionFileManager: ObservableObject {
     
     /// Seeds realistic initial bank transaction samples for first launch / demo mode
     public func seedSampleDataIfEmpty() {
-        guard let url = fileURL else { return }
+        guard fileURL != nil else { return }
         let currentLines = readJSONLines()
         if !currentLines.isEmpty { return }
         

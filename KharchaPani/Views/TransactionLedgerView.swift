@@ -192,7 +192,7 @@ struct LedgerRow: View {
             Spacer()
             
             VStack(alignment: .trailing, spacing: 4) {
-                Text("₹\(txn.amount, specifier: "%.2f")")
+                Text(String(format: "₹%.2f", txn.amount))
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(AppleTheme.textPrimary)
                 

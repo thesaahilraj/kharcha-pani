@@ -30,7 +30,6 @@ public struct AnalyticsView: View {
     }
     
     var dailyTotals: [(dayLabel: String, amount: Double)] {
-        let calendar = Calendar.current
         var map: [String: Double] = [:]
         
         let daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -117,14 +116,14 @@ public struct AnalyticsView: View {
                     HStack(spacing: 14) {
                         MetricBox(
                             title: "DAILY AVERAGE",
-                            value: "₹\(dailyAverage, specifier: "%.2f")",
+                            value: String(format: "₹%.2f", dailyAverage),
                             subtitle: "Per active logging day",
                             icon: "chart.line.uptrend.xyaxis"
                         )
                         
                         MetricBox(
                             title: "TOTAL RECORDED",
-                            value: "₹\(totalOutflow, specifier: "%.2f")",
+                            value: String(format: "₹%.2f", totalOutflow),
                             subtitle: "\(transactions.count) parsed items",
                             icon: "tray.full.fill"
                         )
@@ -160,7 +159,7 @@ public struct AnalyticsView: View {
                                         }
                                         Spacer()
                                         
-                                        Text("₹\(item.total, specifier: "%.2f")")
+                                        Text(String(format: "₹%.2f", item.total))
                                             .font(.system(size: 15, weight: .bold, design: .rounded))
                                             .foregroundColor(AppleTheme.textPrimary)
                                     }
