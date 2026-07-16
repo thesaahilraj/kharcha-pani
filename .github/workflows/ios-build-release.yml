@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - master
     tags:
       - 'v*'
   workflow_dispatch:
@@ -105,5 +104,5 @@ jobs:
           
           ### Installation Options
           1. **iOS Device (.ipa)**: Download \`KharchaPani-v1.0.0.ipa\` and sideload via AltStore, Sideloadly, or Apple Configurator.
-          2. **iOS Simulator (.zip)**: Drag \`KharchaPani-Simulator-v1.0.0.app.zip\` onto Xcode iOS Simulator." \
-            --clobber || gh release upload "$TAG_NAME" KharchaPani-v1.0.0.ipa KharchaPani-Simulator-v1.0.0.app.zip --clobber
+          2. **iOS Simulator (.zip)**: Drag \`KharchaPani-Simulator-v1.0.0.app.zip\` onto Xcode iOS Simulator." || \
+          gh release upload "$TAG_NAME" KharchaPani-v1.0.0.ipa KharchaPani-Simulator-v1.0.0.app.zip --clobber
